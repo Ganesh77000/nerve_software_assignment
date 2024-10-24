@@ -1,0 +1,49 @@
+<div class="tab-container">
+
+    <!-- To show the menu's to be selected -->
+    <ul class="tab-list">
+
+        <!-- Render all available View name's in list -->
+        <li class="tab-item" *ngFor="let stat of strategyArray" [class.active]="selectedTab === stat.View" 
+            (click)="changeTab(stat.View)">
+            {{stat?.View ?? 'NA'}}
+        </li>
+
+    </ul>
+
+    <!-- To show content based on selected menu -->
+    <div class="tab-content">
+
+        <!-- To show data based on date selection -->
+        <div class="accordion-container">
+            
+            <!-- Show all the available date's -->
+            <div class="accordion-item" *ngFor="let date of dateArray, let j = index">
+
+                <!-- Selected date -->
+                <div class="accordion-header" (click)="changeDateCard(j)">{{date}}</div>
+
+                <!-- Data in selected date -->
+                <div class="accordion-content" [class.active]="j === selectedDateIndex">
+
+                    <!-- In case to show there is no records -->
+                    <div *ngIf="formattedDataForSelectedDate?.length === 0">
+                        <span class="dataNotFound">There is no strategies for</span>
+                        
+                        <span class="selectedDate">
+                            {{dateArray[this.selectedDateIndex ?? 0]}}
+                        </span>
+                    </div>
+
+                    <!-- To show the list of strategies if any -->
+                    <div class="strategyHolder" *ngFor="let strategy of formattedDataForSelectedDate">
+                        <div class="strategyName">{{strategy?.strategyName}}</div>
+                        <div class="strategyCount"> <span>.</span> {{strategy?.strategyCount}} {{(((strategy?.strategyCount) > 1) ? 'Strategies' : 'Strategy')}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,153 @@
+$primary-color: #3498db;
+$active-color: #2980b9;
+
+.tab-container {
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+
+    .tab-list {
+        display: flex;
+        background: #f1f1f1;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 0 0.5rem 0 0.5rem;
+
+            &.active {
+                background: $active-color;
+                color: white;
+                border-radius: 1rem;
+                font-weight: 700;
+            }
+
+            &:hover {
+                background: $primary-color;
+                color: white;
+                border-radius: 1rem;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .tab-content {
+        padding-top: 10px;
+        background: white;
+    }
+}
+
+.accordion-container {
+    max-width: 580px;
+    margin: 0 auto;
+
+    .accordion-item {
+        margin-bottom: 0.5rem;
+        
+        .accordion-header {
+            padding: 0.5rem 1rem 0.5rem  1rem;
+            cursor: pointer;
+            background: #f1f1f1;
+            font-size: 16px;
+            border-radius: 0.5rem;
+
+            &:hover {
+                background: $primary-color;
+                color: white;
+                font-weight: 800;
+            }
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 10px 0 10px;
+
+            &.active {
+                display: block;
+                margin: 0.5rem 0 0 0;
+                
+                .strategyHolder {
+                    display: flex;
+                    justify-content: space-between;
+                    border: 1px solid grey;
+                    border-radius: 0.5rem;
+                    padding: 0.5rem;
+                    margin-bottom: 0.5rem;
+
+                    .strategyName {
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+
+                    .strategyCount {
+                        color: gray;
+                        font-size: 18px;
+                    }
+
+                    .strategyCount span {
+                        font-size: 20px;
+                    }
+                }
+
+                .dataNotFound {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 0.2rem;
+                }
+
+                .selectedDate{
+                    display: flex;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: 600px) {
+    .tab-list {
+        flex-direction: column; // Stack tabs vertically on small screens
+    }
+
+    .tab-item {
+        padding: 15px; // Increase padding for easier touch access
+    }
+
+    .accordion-header {
+        font-size: 14px; // Adjust font size for small screens
+    }
+
+    .accordion-content {
+        padding: 10px; // Reduce padding for smaller screens
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .tab-item {
+        font-size: 14px; // Adjust font size for medium screens
+    }
+
+    .accordion-header {
+        font-size: 15px; // Adjust font size for medium screens
+    }
+}
+
+@media (min-width: 901px) {
+    .tab-item {
+        font-size: 16px; // Standard font size for larger screens
+    }
+    .accordion-header {
+        font-size: 16px; // Standard font size for larger screens
+    }
+}
